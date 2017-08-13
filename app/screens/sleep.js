@@ -77,7 +77,7 @@ export default class SleepScreen extends Component {
         isSoundPaused: false,
         showPlay: true,
         duration: -1,
-        playingFileName: 'cello_loop.wav',
+        playingFileName: 'mareritt.mp3',
        };
     }
 
@@ -88,8 +88,8 @@ export default class SleepScreen extends Component {
           {renderIf(!this.state.playingSound,
             <Picker selectedValue={this.state.playingFileName}
               onValueChange={(name) => this.setState({playingFileName: name})}>
-                <Picker.Item label='Cello' value='cello_loop.wav' />
-                <Picker.Item label='Fuglesang' value='bird_spring.mp3' />
+                <Picker.Item label='Mareritt' value='mareritt.mp3' />
+                <Picker.Item label='Pusteøvelse' value='pusteoevelse_478.mp3' />
             </Picker>
           )}
           <Button title={this.state.showPlay ? 'Spill' : 'Pause'} onPress={() => this.playSound()} />
