@@ -3,7 +3,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Button
+  Button,
+  Image
 } from 'react-native';
 import {
   StackNavigator,
@@ -16,9 +17,14 @@ export default class TraumaScreen extends Component {
     render (){
       const {navigate} = this.props.navigation;
       return(
-        <View style={{flexDirection: 'column', alignItems: 'center'}}>
-          <Text style={styles.bold}>Traumer</Text>
-          <Button onPress={() => navigate('AboutTriggers')} title='Om triggere'/>
+        <View style={{flex:1,backgroundColor:'#eee'}}>
+          <View style={styles.backgroundView}>
+            <Image style={styles.backgroundImage} source={require('../img/background-trauma.png')}/>
+          </View>
+          <View style={styles.backgroundContent}>
+            <Text style={styles.bold}>Traumer</Text>
+            <Button onPress={() => navigate('AboutTriggers')} title='Om triggere'/>
+          </View>
         </View>
       );
     }
@@ -38,6 +44,22 @@ export class AboutTriggersScreen extends Component {
 }
 
 const styles = StyleSheet.create({
+  backgroundView:{
+    position:'absolute',
+    top:0,
+    left:0,
+    width:'100%',
+    height:'100%'
+  },
+  backgroundImage:{
+    flex:1,
+  },
+  backgroundContent:{
+    flex:1,
+    flexDirection:'column',
+    alignItems:'center',
+    backgroundColor:'transparent'
+  },
   bold:{
     fontWeight: 'bold'
   },

@@ -5,6 +5,7 @@ import {
   View,
   Button,
   Picker,
+  Image
 } from 'react-native';
 import {
   StackNavigator,
@@ -83,18 +84,42 @@ export default class SleepScreen extends Component {
 
     render (){
       return(
-        <View>
-          <Text>Ting å vite om søvn</Text>
-          {renderIf(!this.state.playingSound,
-            <Picker selectedValue={this.state.playingFileName}
-              onValueChange={(name) => this.setState({playingFileName: name})}>
-                <Picker.Item label='Mareritt' value='mareritt.mp3' />
-                <Picker.Item label='Pusteøvelse' value='pusteoevelse_478.mp3' />
-            </Picker>
-          )}
-          <Button title={this.state.showPlay ? 'Spill' : 'Pause'} onPress={() => this.playSound()} />
-          {renderIf(this.state.playingSound, <Button title='Stopp' onPress={this.stopSound} />)}
+        <View style={{flex:1,backgroundColor:'#eee'}}>
+          <View style={styles.backgroundView}>
+            <Image style={styles.backgroundImage} source={require('../img/background-sleep.png')}/>
+          </View>
+          <View style={styles.backgroundContent}>
+            <Text>Ting å vite om søvn</Text>
+            {renderIf(!this.state.playingSound,
+              <Picker selectedValue={this.state.playingFileName}
+                onValueChange={(name) => this.setState({playingFileName: name})}>
+                  <Picker.Item label='Mareritt' value='mareritt.mp3' />
+                  <Picker.Item label='Pusteøvelse' value='pusteoevelse_478.mp3' />
+                </Picker>
+            )}
+            <Button title={this.state.showPlay ? 'Spill' : 'Pause'} onPress={() => this.playSound()} />
+            {renderIf(this.state.playingSound, <Button title='Stopp' onPress={this.stopSound} />)}
+          </View>
         </View>
       );
     }
 }
+
+const styles = StyleSheet.create({
+  backgroundView:{
+    position:'absolute',
+    top:0,
+    left:0,
+    width:'100%',
+    height:'100%'
+  },
+  backgroundImage:{
+    flex:1,
+  },
+  backgroundContent:{
+    flex:1,
+    flexDirection:'column',
+    alignItems:'center',
+    backgroundColor:'transparent'
+  },
+});

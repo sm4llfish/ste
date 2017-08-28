@@ -88,7 +88,7 @@ export default class ExerciseScreen extends Component {
       return(
         <View style={{flex:1,backgroundColor:'#eee'}}>
           <View style={styles.backgroundView}>
-            <Image style={styles.backgroundImage} source={require('../img/excersice-background.png')}/>
+            <Image style={styles.backgroundImage} source={require('../img/background-exercises.png')}/>
           </View>
           <View style={styles.backgroundContent}>
             <Text style={styles.bold}>Øvelser</Text>
